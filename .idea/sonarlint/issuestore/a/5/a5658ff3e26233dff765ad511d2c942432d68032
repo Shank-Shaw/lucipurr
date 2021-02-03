@@ -1,0 +1,17 @@
+
+L
+java:S1172"/Remove this unused method parameter "employee".(ö×ôİ8ã”×ºö.
+H
+java:S1481"+Remove this unused "netTax" local variable.(ë¸8€®Áºö.
+W
+java:S1854":Remove this useless assignment to local variable "netTax".(„ĞØ¶8ğÖÕºö.
+Z
+java:S1854K"8Remove this useless assignment to local variable "tctc".(ì¾×ƒÿÿÿÿÿ8°á„¾ö.
+W
+java:S1854":Remove this useless assignment to local variable "netTax".(‡Ğ¤ß8ºöÖºö.
+z	java:S1357"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆÿÿÿÿÿ8°á„¾ö.
+X	java:S125O"<This block of commented-out lines of code should be removed.(ç°–˜8â”‡¾ö.
+K
+java:S1481K")Remove this unused "tctc" local variable.(ì¾×ƒÿÿÿÿÿ8°á„¾ö.
+V
+java:S3400"9Remove this method and declare a constant for this value.(”·³›8¤Ü×ºö.
