@@ -11,5 +11,5 @@ public class Employee {
 
     private EmployeeInfo emp;
     private Income income;
-    private Investments investments;
+    private Deductions deductions;
 }

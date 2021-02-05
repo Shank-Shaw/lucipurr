@@ -29,7 +29,7 @@ public class TaxService implements ITaxService {
     }
 
     private double newRegimeTax(Employee employee) {
-        double taxableSalary = 1780900;
+        double taxableSalary = employee.getIncome().tctc();
         double iTax = 0;
         if (taxableSalary < 250000)
             return iTax;
