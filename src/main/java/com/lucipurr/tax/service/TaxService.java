@@ -1,13 +1,19 @@
 package com.lucipurr.tax.service;
 
 import com.lucipurr.tax.abstractions.ITaxService;
+import com.lucipurr.tax.database.model.EmployeeInfoMaster;
+import com.lucipurr.tax.database.repository.EmployeeInfoMasterRepository;
 import com.lucipurr.tax.model.Employee;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 public class TaxService implements ITaxService {
+
+    @Autowired
+    private EmployeeInfoMasterRepository employeeInfoMasterRepository;
 
 
     @Override
@@ -22,6 +28,13 @@ public class TaxService implements ITaxService {
             netTax = oldRegimeTax(employee);
         }
         return Double.toString(netTax);
+    }
+
+    @Override
+    public String saveData(EmployeeInfoMaster employee) {
+        employeeInfoMasterRepository.save(employee);
+        return null;
+
     }
 
     private double oldRegimeTax(Employee employee) {
