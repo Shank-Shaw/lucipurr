@@ -1,0 +1,30 @@
+{
+	"emp":{
+		"empName":"abc",
+		"empId":"x12",
+		"age"1231:,
+		"location":"rural/urban",
+		"regime":"new/old"
+		},
+	"income":{
+		"basicSalary":0,
+		"pf":0,
+		"gratuity":0,
+		"medical":0,
+		"hra":0,
+		"specialAllowances":0,
+		"incomeOtherSources":0
+		},
+	"deductions":{
+		"rentPaid":0,
+		"lta":0,
+		"investment80C":0,
+		"medical80D":0,
+		"interestHomeLoan":0,
+		"investment80E":0,
+		"donations80G":0,
+		"savings80TTA":0,
+		"interest80EE":0,
+		"investment80U":0
+		}
+}
