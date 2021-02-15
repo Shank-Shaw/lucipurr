@@ -13,10 +13,11 @@ public class Income {
     private double gratuity;
     private double medical;
     private double hra;
+    private double lta;
     private double specialAllowances;
     private double incomeOtherSources;
 
     public double tctc() {
-        return (basicSalary + pf + gratuity + medical + hra + specialAllowances + incomeOtherSources);
+        return (basicSalary + pf + gratuity + medical + hra + specialAllowances + incomeOtherSources + lta);
     }
 }
