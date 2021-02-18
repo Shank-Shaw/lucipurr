@@ -4,51 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9214611-6277-4583-82f2-f58c8ffeff40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_2_7_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_20_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/abstractions/IDBservice.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/controller/DBController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/database/model/DeductionsMaster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/database/repository/DeductionsMasterRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/database/repository/IncomeMasterRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/service/DBService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/service/TaxUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/abstractions/IDBservice.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/controller/DBController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/database/model/DeductionsMaster.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/database/repository/DeductionsMasterRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/database/repository/IncomeMasterRepository.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/service/DBService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/service/TaxService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/service/TaxUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_4_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/demo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/LucipurrApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/LucipurrApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/abstractions/ITaxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/abstractions/ITaxService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/controller/TaxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/controller/TaxController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/database/model/EmployeeInfoMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/database/model/EmployeeInfoMaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/database/model/EmployeeMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/database/model/EmployeeMaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/database/model/IncomeMaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/database/model/IncomeMaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/database/repository/EmployeeInfoMasterRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/database/repository/EmployeeInfoMasterRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/model/EmployeeInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/model/EmployeeInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/model/Income.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/model/Income.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/service/TaxService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/lucipurr/tax/service/TaxService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/LucipurrApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/LucipurrApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/abstractions/ITaxService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/abstractions/ITaxService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/database/model/EmployeeInfoMaster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/database/model/EmployeeInfoMaster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/database/model/EmployeeMaster.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/database/model/IncomeMaster.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/database/model/IncomeMaster.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/database/repository/EmployeeInfoMasterRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/database/repository/EmployeeInfoMasterRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/model/EmployeeInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/model/EmployeeInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/model/Income.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/lucipurr/tax/model/Income.class" afterDir="false" />
-    </list>
+    <list default="true" id="c9214611-6277-4583-82f2-f58c8ffeff40" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,6 +44,7 @@
     </favorite-branches>
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="pessinamistic &lt;53684221+pessinamistic@users.noreply.github.com&gt;" />
         <option value="Shashank Shekhar &lt;ssr3151@gmail.com&gt;" />
       </list>
     </option>
@@ -223,7 +180,7 @@
       <workItem from="1613052247736" duration="166000" />
       <workItem from="1613536781082" duration="15274000" />
       <workItem from="1613567276870" duration="3282000" />
-      <workItem from="1613627238185" duration="800000" />
+      <workItem from="1613627238185" duration="1133000" />
     </task>
     <task id="LOCAL-00001" summary="Second Commit &#10;Few Changes nothing very big.&#10;Refactoring code .">
       <created>1612554898357</created>
@@ -253,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613108351391</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Database Integration successful.">
+      <created>1613628388315</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1613628388315</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,7 +240,8 @@
     <MESSAGE value="Second Commit &#10;Few Changes nothing very big.&#10;Refactoring code ." />
     <MESSAGE value="database connectivity Started.&#10;Structure in progress." />
     <MESSAGE value="Security OAUth ON WOrking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Security OAUth ON WOrking" />
+    <MESSAGE value="Database Integration successful." />
+    <option name="LAST_COMMIT_MESSAGE" value="Database Integration successful." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
