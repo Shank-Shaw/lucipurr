@@ -30,6 +30,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -57,12 +58,13 @@
     </favorite-branches>
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="pessinamistic &lt;53684221+pessinamistic@users.noreply.github.com&gt;" />
         <option value="Shashank Shekhar &lt;ssr3151@gmail.com&gt;" />
       </list>
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="database-integration" />
+        <entry key="$PROJECT_DIR$" value="lucipurr-security" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -107,6 +109,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
@@ -125,7 +128,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager" selected="Spring Boot.LucipurrApplication">
     <configuration name="LucipurrApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -189,6 +192,9 @@
       <workItem from="1612842645472" duration="594000" />
       <workItem from="1613027678148" duration="6890000" />
       <workItem from="1613052247736" duration="166000" />
+      <workItem from="1613536781082" duration="15274000" />
+      <workItem from="1613567276870" duration="3282000" />
+      <workItem from="1613627238185" duration="1133000" />
     </task>
     <task id="LOCAL-00001" summary="Second Commit &#10;Few Changes nothing very big.&#10;Refactoring code .">
       <created>1612554898357</created>
@@ -204,7 +210,28 @@
       <option name="project" value="LOCAL" />
       <updated>1612635517108</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="database connectivity Started.&#10;Structure in progress.">
+      <created>1613108325793</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1613108325793</updated>
+    </task>
+    <task id="LOCAL-00004" summary="database connectivity Started.&#10;Structure in progress.">
+      <created>1613108351391</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1613108351391</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Database Integration successful.">
+      <created>1613628388315</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1613628388315</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,7 +253,9 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Second Commit &#10;Few Changes nothing very big.&#10;Refactoring code ." />
     <MESSAGE value="database connectivity Started.&#10;Structure in progress." />
-    <option name="LAST_COMMIT_MESSAGE" value="database connectivity Started.&#10;Structure in progress." />
+    <MESSAGE value="Security OAUth ON WOrking" />
+    <MESSAGE value="Database Integration successful." />
+    <option name="LAST_COMMIT_MESSAGE" value="Database Integration successful." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

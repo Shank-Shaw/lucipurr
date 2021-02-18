@@ -2,46 +2,35 @@ package com.lucipurr.tax.service;
 
 import com.lucipurr.tax.abstractions.ITaxService;
 import com.lucipurr.tax.model.Employee;
-import com.lucipurr.tax.model.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import javax.validation.constraints.NotNull;
 
 @Slf4j
 @Service
 public class TaxService implements ITaxService {
 
+
     @Override
-    public Response netTax(@NotNull Employee employee) {
-        Response response = new Response();
+    public String netTax(Employee employee) {
         double netTax;
         log.info("Employee Details:\n{}", employee);
         String regime = employee.getEmp().getRegime();
         log.info(regime);
         if (regime.equalsIgnoreCase("new")) {
-            netTax = Math.round(newRegimeTax(employee, response));
+            netTax = newRegimeTax(employee);
         } else {
-            netTax = Math.round(oldRegimeTax(employee, response));
+            netTax = oldRegimeTax(employee);
         }
-        response.setSavings(Double.toString(Math.round(newRegimeTax(employee, response) - netTax)));
-        response.setTotalTax(Double.toString(Math.round(newRegimeTax(employee, response) - netTax)));
-        response.setRegime(employee.getEmp().getRegime());
-        log.info("Response That i will Forward to UI.{}", response);
-        return response;
+        return Double.toString(netTax);
     }
 
-    private double oldRegimeTax(Employee employee, Response response) {
+    private double oldRegimeTax(Employee employee) {
         double netSalary = employee.getIncome().tctc();
         double deductions = employee.getDeductions().netExemption();
         double hra = calculateHRADeduction(employee);
         double pf = employee.getIncome().getPf();
         double grossSalary = netSalary - (deductions + hra + pf);
-        response.setNetSalary(Double.toString(netSalary));
-        log.info("\nDeductions:{}\nHRA:{}", deductions, hra);
-        response.setDeductions(Double.toString(deductions + pf));
-        response.setHra(Double.toString(hra));
-        response.setGrossSalary(Double.toString(grossSalary));
+        log.info("\nTCTC:{}\ndeductions:{}\nhra:{}\npf:{}\ngrossSalary:{}\nAll Deductions:{}", netSalary, deductions, hra, pf, grossSalary, deductions + hra + pf);
         double iTax = 0;
         if (grossSalary < 250000) return iTax;
         double slab = 500000;
@@ -61,6 +50,7 @@ public class TaxService implements ITaxService {
         double iTax = 0;
         while (slab != 0) {
             double difference = grossSalary - slab;
+            log.info("difference:{}", difference);
             if (difference < 0) {
                 slab -= 250000;
                 tax = 5;
@@ -79,11 +69,9 @@ public class TaxService implements ITaxService {
         return iTax;
     }
 
-    private double newRegimeTax(@NotNull Employee employee, Response response) {
+    private double newRegimeTax(Employee employee) {
         double taxableSalary = employee.getIncome().tctc();
         double iTax = 0;
-        response.setNetSalary(Double.toString(taxableSalary));
-        response.setGrossSalary(Double.toString(taxableSalary));
         if (taxableSalary < 250000)
             return iTax;
         double slab = 1250000;

@@ -25,4 +25,9 @@ public class TaxController {
                 .data(iTaxService.netTax(employee))
                 .build();
     }
+
+    @GetMapping(value = "/calculate/{empId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> saveData(@PathVariable String empId) {
+        return ResponseEntity.ok(iTaxService.calculateTax(empId));
+    }
 }

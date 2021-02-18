@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Income {
+
     private double basicSalary;
     private double pf;
     private double gratuity;
