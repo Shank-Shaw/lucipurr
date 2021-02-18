@@ -12,6 +12,7 @@ public class EmployeeInfo {
     private String empName;
     private String empId;
     private long age;
+    private String email;
     private String location;
     private String regime;
 }

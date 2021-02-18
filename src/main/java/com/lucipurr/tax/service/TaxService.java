@@ -1,8 +1,10 @@
 package com.lucipurr.tax.service;
 
+import com.lucipurr.tax.abstractions.IDBservice;
 import com.lucipurr.tax.abstractions.ITaxService;
-import com.lucipurr.tax.database.model.EmployeeInfoMaster;
+import com.lucipurr.tax.database.repository.DeductionsMasterRepository;
 import com.lucipurr.tax.database.repository.EmployeeInfoMasterRepository;
+import com.lucipurr.tax.database.repository.IncomeMasterRepository;
 import com.lucipurr.tax.model.Employee;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,13 @@ public class TaxService implements ITaxService {
 
     @Autowired
     private EmployeeInfoMasterRepository employeeInfoMasterRepository;
+
+    @Autowired
+    IDBservice idBservice;
+
+    public TaxService(EmployeeInfoMasterRepository infoMasterRepository, IncomeMasterRepository incomeMasterRepository, DeductionsMasterRepository deductionsMasterRepository) {
+        this.idBservice = new DBService(infoMasterRepository, incomeMasterRepository, deductionsMasterRepository);
+    }
 
 
     @Override
@@ -31,10 +40,17 @@ public class TaxService implements ITaxService {
     }
 
     @Override
-    public String saveData(EmployeeInfoMaster employee) {
-        employeeInfoMasterRepository.save(employee);
-        return null;
-
+    public String calculateTax(String empId) {
+        Employee employee = idBservice.fetchDetailsEmpId(empId);
+        String regime = employee.getEmp().getRegime();
+        long age = employee.getEmp().getAge();
+        Double netTax;
+        if (regime.equalsIgnoreCase("new")) {
+            netTax = newRegimeTax(employee);
+        } else {
+            netTax = oldRegimeTax(employee);
+        }
+        return Double.toString(netTax);
     }
 
     private double oldRegimeTax(Employee employee) {

@@ -13,23 +13,22 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class EmployeeInfoMaster {
 
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id")
+    private long id;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "EmpId")
+    @Column(name = "empId")
     private String empId;
 
     @Column(name = "empName")
     private String empName;
-
     @Column(name = "email")
     private String email;
-
     @Column(name = "age")
     private long age;
-
     @Column(name = "location")
     private String location;
-
     @Column(name = "regime")
     private String regime;
 

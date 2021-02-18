@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmployeeInfoMasterRepository extends JpaRepository<EmployeeInfoMaster, Number> {
 
-    @Query(value = "SELECT E FROM EmployeeInfoMaster E WHERE UPPER(E.empId) = UPPER(?1)")
-    EmployeeInfoMaster findByUserId(String userId);
+    @Query(value = "SELECT U FROM EmployeeInfoMaster U WHERE UPPER(U.empId) = UPPER(?1)")
+    EmployeeInfoMaster findByEmpId(String empId);
 
 }

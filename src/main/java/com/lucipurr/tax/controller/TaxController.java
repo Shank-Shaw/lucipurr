@@ -1,7 +1,6 @@
 package com.lucipurr.tax.controller;
 
 import com.lucipurr.tax.abstractions.ITaxService;
-import com.lucipurr.tax.database.model.EmployeeInfoMaster;
 import com.lucipurr.tax.model.Employee;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,8 @@ public class TaxController {
         return ResponseEntity.ok(iTaxService.netTax(employee));
     }
 
-    @PostMapping(value = "/save", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> saveData(@RequestBody EmployeeInfoMaster employee) {
-        return ResponseEntity.ok(iTaxService.saveData(employee));
+    @GetMapping(value = "/calculate/{empId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> saveData(@PathVariable String empId) {
+        return ResponseEntity.ok(iTaxService.calculateTax(empId));
     }
 }
