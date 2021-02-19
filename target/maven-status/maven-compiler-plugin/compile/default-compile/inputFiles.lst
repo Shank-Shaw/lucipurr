@@ -1,3 +1,4 @@
+/Users/b0218995/IdeaProjects/lucipurr/src/main/java/com/lucipurr/tax/model/Response.java
 /Users/b0218995/IdeaProjects/lucipurr/src/main/java/com/lucipurr/tax/controller/TaxController.java
 /Users/b0218995/IdeaProjects/lucipurr/src/main/java/com/lucipurr/tax/database/repository/DeductionsMasterRepository.java
 /Users/b0218995/IdeaProjects/lucipurr/src/main/java/com/lucipurr/tax/database/model/EmployeeInfoMaster.java
@@ -17,3 +18,4 @@
 /Users/b0218995/IdeaProjects/lucipurr/src/main/java/com/lucipurr/tax/service/DBService.java
 /Users/b0218995/IdeaProjects/lucipurr/src/main/java/com/lucipurr/tax/model/EmployeeInfo.java
 /Users/b0218995/IdeaProjects/lucipurr/src/main/java/com/lucipurr/tax/abstractions/ITaxService.java
+/Users/b0218995/IdeaProjects/lucipurr/src/main/java/com/lucipurr/tax/model/ClientResponseVO.java

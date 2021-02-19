@@ -6,13 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "DEDUCTION_MASTER")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DeductionsMaster {
+public class DeductionsMaster implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

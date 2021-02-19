@@ -1,7 +1,7 @@
 package com.lucipurr.tax.abstractions;
 
-import com.lucipurr.tax.model.Employee;
+import com.lucipurr.tax.model.Response;
 
 public interface ITaxService {
-    String netTax(Employee employee);
+    Response calculateTax(String empId);
 }

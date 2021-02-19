@@ -68,6 +68,7 @@ public class TaxUtil {
         employeeInfo.setEmpId(employeeInfoMaster.getEmpId());
         employeeInfo.setEmpName(employeeInfoMaster.getEmpName());
         employeeInfo.setAge(employeeInfoMaster.getAge());
+        employeeInfo.setEmail(employeeInfo.getEmail());
         employeeInfo.setLocation(employeeInfoMaster.getLocation());
         employeeInfo.setRegime(employeeInfoMaster.getRegime());
         return employeeInfo;

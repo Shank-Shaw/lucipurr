@@ -1,36 +1,60 @@
 package com.lucipurr.tax.service;
 
+import com.lucipurr.tax.abstractions.IDataBaseService;
 import com.lucipurr.tax.abstractions.ITaxService;
+import com.lucipurr.tax.database.repository.DeductionsMasterRepository;
+import com.lucipurr.tax.database.repository.EmployeeInfoMasterRepository;
+import com.lucipurr.tax.database.repository.IncomeMasterRepository;
 import com.lucipurr.tax.model.Employee;
+import com.lucipurr.tax.model.Response;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.validation.constraints.NotNull;
 
 @Slf4j
 @Service
 public class TaxService implements ITaxService {
+    @Autowired
+    IDataBaseService IDataBaseservice;
+    @Autowired
+    private EmployeeInfoMasterRepository employeeInfoMasterRepository;
 
-
-    @Override
-    public String netTax(Employee employee) {
-        double netTax;
-        log.info("Employee Details:\n{}", employee);
-        String regime = employee.getEmp().getRegime();
-        log.info(regime);
-        if (regime.equalsIgnoreCase("new")) {
-            netTax = newRegimeTax(employee);
-        } else {
-            netTax = oldRegimeTax(employee);
-        }
-        return Double.toString(netTax);
+    public TaxService(EmployeeInfoMasterRepository infoMasterRepository, IncomeMasterRepository incomeMasterRepository, DeductionsMasterRepository deductionsMasterRepository) {
+        this.IDataBaseservice = new DataBaseService(infoMasterRepository, incomeMasterRepository, deductionsMasterRepository);
     }
 
-    private double oldRegimeTax(Employee employee) {
+    @Override
+    public Response calculateTax(String empId) {
+        Employee employee = IDataBaseservice.fetchDetailsEmpId(empId);
+        String regime = employee.getEmp().getRegime();
+        long age = employee.getEmp().getAge();
+        Response response = new Response();
+        double netTax;
+        if (regime.equalsIgnoreCase("new")) {
+            netTax = Math.round(newRegimeTax(employee, response));
+        } else {
+            netTax = Math.round(oldRegimeTax(employee, response));
+        }
+        response.setSavings(Double.toString(Math.round(newRegimeTax(employee, response) - netTax)));
+        response.setTotalTax(Double.toString(Math.round(netTax)));
+        response.setRegime(employee.getEmp().getRegime());
+        log.info("Response That i will Forward to UI.{}", response);
+        return response;
+    }
+
+    private double oldRegimeTax(Employee employee, Response response) {
         double netSalary = employee.getIncome().tctc();
         double deductions = employee.getDeductions().netExemption();
         double hra = calculateHRADeduction(employee);
         double pf = employee.getIncome().getPf();
         double grossSalary = netSalary - (deductions + hra + pf);
-        log.info("\nTCTC:{}\ndeductions:{}\nhra:{}\npf:{}\ngrossSalary:{}\nAll Deductions:{}", netSalary, deductions, hra, pf, grossSalary, deductions + hra + pf);
+        response.setNetSalary(Double.toString(netSalary));
+        log.info("\nDeductions:{}\nHRA:{}", deductions, hra);
+        response.setDeductions(Double.toString(deductions + pf));
+        response.setHra(Double.toString(hra));
+        response.setGrossSalary(Double.toString(grossSalary));
         double iTax = 0;
         if (grossSalary < 250000) return iTax;
         double slab = 500000;
@@ -50,7 +74,6 @@ public class TaxService implements ITaxService {
         double iTax = 0;
         while (slab != 0) {
             double difference = grossSalary - slab;
-            log.info("difference:{}", difference);
             if (difference < 0) {
                 slab -= 250000;
                 tax = 5;
@@ -69,9 +92,11 @@ public class TaxService implements ITaxService {
         return iTax;
     }
 
-    private double newRegimeTax(Employee employee) {
+    private double newRegimeTax(@NotNull Employee employee, Response response) {
         double taxableSalary = employee.getIncome().tctc();
         double iTax = 0;
+        response.setNetSalary(Double.toString(taxableSalary));
+        response.setGrossSalary(Double.toString(taxableSalary));
         if (taxableSalary < 250000)
             return iTax;
         double slab = 1250000;
