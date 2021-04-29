@@ -1,0 +1,28 @@
+version: 2
+updates:
+- package-ecosystem: maven
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  target-branch: database-integration
+  ignore:
+  - dependency-name: org.springframework.boot:spring-boot-starter-parent
+    versions:
+    - 2.4.3
+    - 2.4.4
+  - dependency-name: com.fasterxml.jackson.dataformat:jackson-dataformat-csv
+    versions:
+    - 2.12.2
+  - dependency-name: com.fasterxml.jackson.dataformat:jackson-dataformat-yaml
+    versions:
+    - 2.12.2
+  - dependency-name: com.fasterxml.jackson.core:jackson-core
+    versions:
+    - 2.12.2
+  - dependency-name: org.jetbrains:annotations
+    versions:
+    - 20.1.0
+  - dependency-name: com.zaxxer:HikariCP
+    versions:
+    - 4.0.2
