@@ -45,10 +45,9 @@ public class DataBaseService implements IDataBaseService {
         EmployeeInfoMaster employeeInfoMaster = employeeInfoMasterRepository.findByEmpId(empId);
         IncomeMaster incomeMaster = incomeMasterRepository.findByEmpId(empId);
         DeductionsMaster deductionsMaster = deductionsMasterRepository.findByEmpId(empId);
-        Employee employee = new Employee(taxUtil.convertEmployeeInfoMaster(employeeInfoMaster),
+        return new Employee(taxUtil.convertEmployeeInfoMaster(employeeInfoMaster),
                 taxUtil.convertIncomeMaster(incomeMaster),
                 taxUtil.convertDeductionMaster(deductionsMaster));
-        return employee;
     }
 
 }
