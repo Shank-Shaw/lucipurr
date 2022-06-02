@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.NotNull;
 
 @Slf4j
 @Service
@@ -93,7 +92,7 @@ public class TaxService implements ITaxService {
         return iTax;
     }
 
-    private double newRegimeTax(@NotNull Employee employee, Response response) {
+    private double newRegimeTax(Employee employee, Response response) {
         double taxableSalary = employee.getIncome().tctc();
         double iTax = 0;
         response.setNetSalary(Double.toString(taxableSalary));
