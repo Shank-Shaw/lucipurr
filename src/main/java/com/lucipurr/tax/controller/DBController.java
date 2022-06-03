@@ -42,10 +42,22 @@ public class DBController {
     @PostMapping(value = "/save")
     public ClientResponseVO<String> save(@RequestBody Employee employee) {
         return ClientResponseVO
-                .<String>ok()
+                .<String>created()
                 .desc("Employee Details for Saved.")
                 .data(IDataBaseservice.save(employee))
                 .build();
     }
+
+//    @ApiOperation(value = "SaveEmployeeAPI", notes = "Save new entity in FAQ's.")
+//    @GetMapping(value = "/demo")
+//    public ClientResponseVO<String> makeDemoData(@RequestBody Greeting greeting,
+//                                                 @RequestParam(value = "count") int count) {
+//        return ClientResponseVO
+//                .<String>ok()
+//                .desc("Employee Details for Saved.")
+//                .data()
+//                .build();
+//    }
+
 
 }
