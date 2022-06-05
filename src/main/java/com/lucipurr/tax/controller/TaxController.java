@@ -1,6 +1,7 @@
 package com.lucipurr.tax.controller;
 
 import com.lucipurr.tax.abstractions.ITaxService;
+import com.lucipurr.tax.kafka.Greeting;
 import com.lucipurr.tax.model.ClientResponseVO;
 import com.lucipurr.tax.model.Response;
 import com.lucipurr.tax.service.KafkaService;
@@ -10,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RequestMapping("/tax")
 @Slf4j
@@ -40,6 +42,12 @@ public class TaxController {
         } else {
             kafkaService.sendMessage(message, Integer.parseInt(partition));
         }
+        return "Message sent to the Kafka Topic java_in_use_topic Successfully";
+    }
+
+    @GetMapping(value = "/producer/bulk/{id}")
+    public String producerBulk(@PathVariable(value = "id") int id, @RequestBody List<Greeting> message) {
+        kafkaService.sendBulkData(id, message);
         return "Message sent to the Kafka Topic java_in_use_topic Successfully";
     }
 }

@@ -4,6 +4,7 @@ import com.lucipurr.tax.abstractions.IDataBaseService;
 import com.lucipurr.tax.database.repository.DeductionsMasterRepository;
 import com.lucipurr.tax.database.repository.EmployeeInfoMasterRepository;
 import com.lucipurr.tax.database.repository.IncomeMasterRepository;
+import com.lucipurr.tax.kafka.Greeting;
 import com.lucipurr.tax.model.ClientResponseVO;
 import com.lucipurr.tax.model.Employee;
 import com.lucipurr.tax.service.DataBaseService;
@@ -11,6 +12,10 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -48,16 +53,26 @@ public class DBController {
                 .build();
     }
 
-//    @ApiOperation(value = "SaveEmployeeAPI", notes = "Save new entity in FAQ's.")
-//    @GetMapping(value = "/demo")
-//    public ClientResponseVO<String> makeDemoData(@RequestBody Greeting greeting,
-//                                                 @RequestParam(value = "count") int count) {
-//        return ClientResponseVO
-//                .<String>ok()
-//                .desc("Employee Details for Saved.")
-//                .data()
-//                .build();
-//    }
+    @ApiOperation(value = "SaveEmployeeAPI", notes = "Save new entity in FAQ's.")
+    @GetMapping(value = "/demo")
+    public ClientResponseVO<List<Greeting>> makeDemoData(@RequestParam(value = "count") int count) {
+        return ClientResponseVO
+                .<List<Greeting>>ok()
+                .desc("Employee Details for Saved.")
+                .data(buildDemoData(count))
+                .build();
+    }
+
+    private List<Greeting> buildDemoData(int count) {
+        List<Greeting> greetingList = new ArrayList<>();
+        for (int i = 1; i <= count; i++) {
+            greetingList.add(Greeting.builder()
+                    .id(i)
+                    .name(UUID.randomUUID().toString())
+                    .build());
+        }
+        return greetingList;
+    }
 
 
 }

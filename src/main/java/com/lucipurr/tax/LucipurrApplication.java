@@ -2,6 +2,8 @@ package com.lucipurr.tax;
 
 
 import com.lucipurr.tax.kafka.Greeting;
+import com.lucipurr.tax.kafka.GreetingBatch;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -9,7 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.kafka.support.SendResult;
@@ -21,6 +22,7 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+@Slf4j
 @SpringBootApplication
 public class LucipurrApplication {
 	public static void main(String[] args) throws InterruptedException {
@@ -117,25 +119,13 @@ public class LucipurrApplication {
 //		}
 		@KafkaListener(topics = "${kafka.topic}", groupId = "foo", containerFactory = "fooKafkaListenerContainerFactory")
 		public void listenGroupFooPartition(@Payload String message, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
-			System.out.println("Received Message in group 'foo': " + message + "from partition: " + partition);
+			log.info("Received Message in group 'foo': " + message + "from partition: " + partition);
 			latch.countDown();
 		}
 
-		@KafkaListener(topicPartitions = @TopicPartition(topic = "${partitioned.topic.name}", partitions = {"0", "3"}), containerFactory = "partitionsKafkaListenerContainerFactory")
-		public void listenToPartition(@Payload String message, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
-			System.out.println("Received Message: " + message + " from partition: " + partition);
-			this.partitionLatch.countDown();
-		}
-
-		@KafkaListener(topics = "${filtered.topic.name}", containerFactory = "filterKafkaListenerContainerFactory")
-		public void listenWithFilter(String message) {
-			System.out.println("Received Message in filtered listener: " + message);
-			this.filterLatch.countDown();
-		}
-
 		@KafkaListener(topics = "${greeting.topic.name}", containerFactory = "greetingKafkaListenerContainerFactory")
-		public void greetingListener(Greeting greeting) {
-			System.out.println("Received greeting message: " + greeting);
+		public void greetingListener(GreetingBatch greeting, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
+			log.info("Received Message in group 'greeting' message: {} and partition : {}", greeting, partition);
 			this.greetingLatch.countDown();
 		}
 

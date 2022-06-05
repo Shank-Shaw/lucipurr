@@ -1,4 +1,6 @@
-kafka-topics.sh --zookeeper zk_host:port/chroot --alter --topic --partitions 40 
+cd /opt/kafka_2.13-2.8.1/bin
+
+kafka-topics.sh --zookeeper zk_host:port/chroot --alter --topic --partitions 40
 
 kafka-topics.sh --create --topic topic.lucipurr.test --replication-factor 1 --partitions 3  --zookeeper localhost:2181
 
@@ -10,8 +12,11 @@ kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --par
 
 kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic topic.lucipurr.test
 kafka-topics.sh --zookeeper zookeeper:2181 --alter --topic topic.lucipurr.test --partitions 3
-kafka-topics --zookeeper zookeeper:2181 --alter --topic topic.lucipurr.test --partitions 3 
+kafka-topics --zookeeper zookeeper:2181 --alter --topic topic.lucipurr.test --partitions 3
 
+kafka-topics.sh --bootstrap-server localhost:9092 --list
 
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic.lucipurr.test --from-beginning
 kafka-console-consumer --bootstrap-server localhost:9092 --topic topic.lucipurr.test --from-beginning
+
+kafka-topics.sh --zookeeper zookeeper:2181 --alter --topic greeting --partitions 3

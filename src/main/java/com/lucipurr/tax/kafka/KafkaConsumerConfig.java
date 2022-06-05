@@ -43,39 +43,16 @@ public class KafkaConsumerConfig {
         return kafkaListenerContainerFactory("foo");
     }
 
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> headersKafkaListenerContainerFactory() {
-        return kafkaListenerContainerFactory("headers");
-    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> partitionsKafkaListenerContainerFactory() {
-        return kafkaListenerContainerFactory("partitions");
-    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> longMessageKafkaListenerContainerFactory() {
-        return kafkaListenerContainerFactory("longMessage");
-    }
-
-    @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, String> filterKafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, String> factory = kafkaListenerContainerFactory("filter");
-        factory.setRecordFilterStrategy(record -> record.value()
-                .contains("World"));
-        return factory;
-    }
-
-    public ConsumerFactory<String, Greeting> greetingConsumerFactory() {
+    public ConsumerFactory<String, GreetingBatch> greetingConsumerFactory() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "greeting");
-        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(Greeting.class));
+        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(GreetingBatch.class));
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, Greeting> greetingKafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, Greeting> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, GreetingBatch> greetingKafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, GreetingBatch> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(greetingConsumerFactory());
         return factory;
     }

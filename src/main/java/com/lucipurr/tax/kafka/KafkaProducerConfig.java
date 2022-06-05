@@ -49,4 +49,18 @@ public class KafkaProducerConfig {
         return new KafkaTemplate<>(greetingProducerFactory());
     }
 
+    @Bean
+    public ProducerFactory<String, GreetingBatch> batchKafkaFactory() {
+        Map<String, Object> configProps = new HashMap<>();
+        configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+        configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        return new DefaultKafkaProducerFactory<>(configProps);
+    }
+
+    @Bean
+    public KafkaTemplate<String, GreetingBatch> batchKafkaTemplate() {
+        return new KafkaTemplate<>(batchKafkaFactory());
+    }
+
 }
