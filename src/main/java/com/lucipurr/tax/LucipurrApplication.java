@@ -32,10 +32,10 @@ public class LucipurrApplication {
 		MessageProducer producer = context.getBean(MessageProducer.class);
 		MessageListener listener = context.getBean(MessageListener.class);
 
-		listener.latch.await(10, TimeUnit.SECONDS);
-		listener.partitionLatch.await(10, TimeUnit.SECONDS);
-		listener.filterLatch.await(10, TimeUnit.SECONDS);
-		listener.greetingLatch.await(10, TimeUnit.SECONDS);
+		listener.latch.await(10000, TimeUnit.SECONDS);
+		listener.partitionLatch.await(10000, TimeUnit.SECONDS);
+		listener.filterLatch.await(10000, TimeUnit.SECONDS);
+		listener.greetingLatch.await(10000, TimeUnit.SECONDS);
 
 		context.close();
 	}
@@ -123,8 +123,14 @@ public class LucipurrApplication {
 			latch.countDown();
 		}
 
-		@KafkaListener(topics = "${greeting.topic.name}", containerFactory = "greetingKafkaListenerContainerFactory")
-		public void greetingListener(GreetingBatch greeting, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
+//		@KafkaListener(topics = "${greeting.topic.name}", containerFactory = "greetingKafkaListenerContainerFactory")
+//		public void greetingListener(Greeting greeting, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
+//			log.info("Received Message in group 'greeting' message: {} and partition : {}", greeting, partition);
+//			this.greetingLatch.countDown();
+//		}
+
+		@KafkaListener(topics = "${greeting.topic.name}", containerFactory = "batchKafkaListenerContainerFactory")
+		public void batchListener(GreetingBatch greeting, @Header(KafkaHeaders.RECEIVED_PARTITION_ID) int partition) {
 			log.info("Received Message in group 'greeting' message: {} and partition : {}", greeting, partition);
 			this.greetingLatch.countDown();
 		}

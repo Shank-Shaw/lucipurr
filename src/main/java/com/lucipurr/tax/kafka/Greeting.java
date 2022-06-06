@@ -1,15 +1,14 @@
 package com.lucipurr.tax.kafka;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Greeting {
-    private int id;
-    private String name;
+    Integer id;
+    String name;
 }

@@ -19,7 +19,6 @@ public class KafkaService {
 
     @Value(value = "${kafka.topic}")
     private String topicName;
-
     @Value(value = "${greeting.topic.name}")
     private String greetingTopicName;
     private KafkaTemplate<String, String> kafkaTemplate;
@@ -40,7 +39,7 @@ public class KafkaService {
         if (partition == -1) {
             future = kafkaTemplate.send(topicName, message);
         } else {
-            future = kafkaTemplate.send(topicName, partition, null, message);
+            future = kafkaTemplate.send(topicName, null, message);
 
         }
 
@@ -61,7 +60,7 @@ public class KafkaService {
 
 
     public void sendGreetingMessage(Greeting greeting) {
-        greetingKafkaTemplate.send(greetingTopicName, greeting);
+        greetingKafkaTemplate.send(greetingTopicName, greeting.getId().toString(), greeting);
     }
 
     public static void main(String[] args) {
@@ -84,7 +83,7 @@ public class KafkaService {
                     .greeting(message.subList(start, start + 10))
                     .build();
             log.info("batch no : {} and batch : {}", batch.getBatchId(), batch);
-            batchKafkaTemplate.send(greetingTopicName, batch);
+            batchKafkaTemplate.send(greetingTopicName, id.toString(), batch);
         }
     }
 }

@@ -45,6 +45,12 @@ public class TaxController {
         return "Message sent to the Kafka Topic java_in_use_topic Successfully";
     }
 
+    @GetMapping(value = "/producer/greeting")
+    public String greetingProducer(@RequestBody Greeting message) {
+        kafkaService.sendGreetingMessage(message);
+        return "Message sent to the Kafka Topic java_in_use_topic Successfully";
+    }
+
     @GetMapping(value = "/producer/bulk/{id}")
     public String producerBulk(@PathVariable(value = "id") int id, @RequestBody List<Greeting> message) {
         kafkaService.sendBulkData(id, message);

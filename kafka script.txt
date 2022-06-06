@@ -22,4 +22,6 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic topic.lucipurr.
 
 kafka-topics.sh --zookeeper zookeeper:2181 --alter --topic greeting --partitions 3
 
+kafka-topics.sh --bootstrap-server=localhost:9092 --describe --topic users.registrations
+
 kafka-topics.sh --list --bootstrap-server localhost:9092 # list all topics in a Kafka Server
