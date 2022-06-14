@@ -1,5 +1,6 @@
 package com.lucipurr.tax.service;
 
+import com.google.common.collect.Lists;
 import com.lucipurr.tax.kafka.Greeting;
 import com.lucipurr.tax.kafka.GreetingBatch;
 import lombok.extern.slf4j.Slf4j;
@@ -34,15 +35,14 @@ public class KafkaService {
         this.batchKafkaTemplate = batchKafkaTemplate;
     }
 
-    public void sendMessage(String message, int partition) {
+    public void sendMessage(String message, String partition) {
         ListenableFuture<SendResult<String, String>> future;
-        if (partition == -1) {
+        if (partition == null) {
             future = kafkaTemplate.send(topicName, message);
         } else {
-            future = kafkaTemplate.send(topicName, null, message);
+            future = kafkaTemplate.send(topicName, partition, message);
 
         }
-
         future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
 
             @Override
@@ -74,13 +74,13 @@ public class KafkaService {
 
     public void sendBulkData(Integer id, List<Greeting> message) {
         log.info("Bulk Data : {}", message);
-        int hits = (int) Math.ceil((message.size() / 10.0));
+        List<List<Greeting>> slices = Lists.partition(message, 10);
+        int hits = slices.size();
         for (int i = 0; i < hits; i++) {
-            int start = i * 10;
             GreetingBatch batch = GreetingBatch.builder()
                     .batchId(id)
                     .id(i + 1)
-                    .greeting(message.subList(start, start + 10))
+                    .greeting(slices.get(i))
                     .build();
             log.info("batch no : {} and batch : {}", batch.getBatchId(), batch);
             batchKafkaTemplate.send(greetingTopicName, id.toString(), batch);

@@ -38,9 +38,9 @@ public class TaxController {
     public String producer(@RequestParam("message") String message,
                            @RequestParam(value = "partition", required = false) String partition) {
         if (httpServletRequest.getParameter("partition") == null) {
-            kafkaService.sendMessage(message, -1);
+            kafkaService.sendMessage(message, null);
         } else {
-            kafkaService.sendMessage(message, Integer.parseInt(partition));
+            kafkaService.sendMessage(message, partition);
         }
         return "Message sent to the Kafka Topic java_in_use_topic Successfully";
     }
