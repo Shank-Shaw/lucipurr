@@ -15,13 +15,14 @@ kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --par
 kafka-topics.sh --zookeeper zookeeper:2181 --alter --topic topic.lucipurr.test --partitions 3
 kafka-topics --zookeeper zookeeper:2181 --alter --topic topic.lucipurr.test --partitions 3
 
-kafka-topics.sh --bootstrap-server localhost:9092 --list
+./kafka-topics.sh --bootstrap-server localhost:9092 --list
+
+./kafka-topics.sh --zookeeper zookeeper:2181 --list
 
 kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic topic.lucipurr.test --from-beginning
 kafka-console-consumer --bootstrap-server localhost:9092 --topic topic.lucipurr.test --from-beginning
 
 kafka-topics.sh --zookeeper zookeeper:2181 --alter --topic greeting --partitions 3
 
-kafka-topics.sh --bootstrap-server=localhost:9092 --describe --topic users.registrations
-
-kafka-topics.sh --list --bootstrap-server localhost:9092 # list all topics in a Kafka Server
+./kafka-topics.sh --bootstrap-server=localhost:9092 --describe --topic users.registrations
+ # list all topics in a Kafka Server
