@@ -20,11 +20,13 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @CrossOrigin
 public class DBController {
 
-    IDataBaseService IDataBaseservice;
+    IDataBaseService iDataBaseservice;
 
     @Autowired
-    public DBController(EmployeeInfoMasterRepository infoMasterRepository, IncomeMasterRepository incomeMasterRepository, DeductionsMasterRepository deductionsMasterRepository) {
-        this.IDataBaseservice = new DataBaseService(infoMasterRepository, incomeMasterRepository, deductionsMasterRepository);
+    public DBController(EmployeeInfoMasterRepository infoMasterRepository,
+                        IncomeMasterRepository incomeMasterRepository,
+                        DeductionsMasterRepository deductionsMasterRepository) {
+        this.iDataBaseservice = new DataBaseService(infoMasterRepository, incomeMasterRepository, deductionsMasterRepository);
     }
 
     @ApiOperation(value = "fetchEmployeeAPI", notes = "Fetch ALL FAQ's by types")
@@ -34,7 +36,7 @@ public class DBController {
         return ClientResponseVO
                 .<Employee>ok()
                 .desc("Employee Details for Fetched:" + empId + ".\n")
-                .data(IDataBaseservice.fetchDetailsEmpId(empId))
+                .data(iDataBaseservice.fetchDetailsEmpId(empId))
                 .build();
     }
 
@@ -44,7 +46,7 @@ public class DBController {
         return ClientResponseVO
                 .<String>ok()
                 .desc("Employee Details for Saved.")
-                .data(IDataBaseservice.save(employee))
+                .data(iDataBaseservice.save(employee))
                 .build();
     }
 
